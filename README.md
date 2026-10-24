@@ -1,4 +1,4 @@
-# 🔐 Premium Password Generator
+# 🔐 Password Generator
 
 A sleek, responsive, and secure **single-page password generator application** built using vanilla web technologies. It features dynamic length validation, customizable character pools (numbers and symbols) via interactive sliding toggle switches, custom cursor state management, and a highly polished "Click-to-Copy" utility that prevents browser highlights on spam clicks.
 
