@@ -7,6 +7,16 @@
             <h1>Generate a</h1>
             <h1 id="head-text-el">random password</h1>
             <p>Never use an insecure password again.</p>
+            <div class="options-container">
+                <label class="toggle-label">
+                    <input type="checkbox" id="allow-symbols" checked>
+                    Include Symbols
+                </label>
+                <label class="toggle-label">
+                    <input type="checkbox" id="allow-numbers" checked>
+                    Include Numbers
+                </label>
+            </div>
             <div class="form">
                 <input type="text" id="user-input" placeholder="Enter length of password.">
                 <button id="gen-btn">Generate Passwords</button>

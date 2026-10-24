@@ -1,10 +1,14 @@
-const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9","~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]",",","|",":",";","<",">",".","?",
-"/"];
-
+const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V",
+    "W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v",
+    "w","x","y","z"];
+const symbols = ["~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]",",","|",":",";","<",">",".","?","/"]
+const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 let genBtn = document.getElementById("gen-btn")
 let display_1 = document.getElementById("pass-1")
 let display_2 = document.getElementById("pass-2")
+let symbolsToggle = document.getElementById("allow-symbols");
+let numbersToggle = document.getElementById("allow-numbers");
 let inputField = document.getElementById("user-input");
 
 
@@ -40,15 +44,27 @@ function handleButtonClick(){
         alert("For performance and security reasons please enter a length of 64 or less")
         return;
     } else {
+        let allowedCharacters = [...letters]; 
+        let includeSymbols = symbolsToggle.checked;
+        let includeNumbers = numbersToggle.checked;
+        
+        if (includeSymbols) {
+            allowedCharacters = allowedCharacters.concat(symbols);
+        }
+        
+        if (includeNumbers) {
+            allowedCharacters = allowedCharacters.concat(numbers);
+        }
+
         let exactlength = Math.floor(passwordLength)
         let generatedPassword_1 = ""
         let generatedPassword_2 = ""
         
         for (let i = 0; i < exactlength; i++){
-            let randIndex_1 = Math.floor(Math.random() * characters.length)
-            let randIndex_2 = Math.floor(Math.random() * characters.length)
-            generatedPassword_1 += characters[randIndex_1]
-            generatedPassword_2 += characters[randIndex_2]
+            let randIndex_1 = Math.floor(Math.random() * allowedCharacters.length)
+            let randIndex_2 = Math.floor(Math.random() * allowedCharacters.length)
+            generatedPassword_1 += allowedCharacters[randIndex_1]
+            generatedPassword_2 += allowedCharacters[randIndex_2]
         }
         
         display_1.textContent = generatedPassword_1
