@@ -51,14 +51,15 @@ hr {
 }
 
 .result-el{
+    position: relative;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color:#273549;
     width: 15rem;
-    min-height: 4rem;      /* Changed from height to min-height */
+    min-height: 4rem;      
     height: auto;          /* Allows scaling upwards if text wraps */
-    
     margin-left: 4rem;
     margin-right: 4rem;
     margin-top: 3rem;
@@ -66,10 +67,75 @@ hr {
     color: #55fa91;
     text-align: center;
 
-    overflow-wrap: anywhere;  /* Forces long words/links to break onto a new line */
+    overflow-wrap: anywhere;  
     box-sizing: border-box; 
     padding: 1rem;
+    border-radius: 4px ;
+    user-select: none;
 }
+
+.result-el[data-password],
+.result-el.copied {
+    cursor: pointer;
+}
+
+.result-el[data-password]:not(.copied):hover {
+     font-size: 0 !important;
+}
+
+.result-el[data-password]:not(.copied):hover::after {
+    content: "Click to Copy 📋";
+    position: absolute;
+    color: #55fa91; 
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.result-el.copied {
+     font-size: 0 !important; /* Hides the password text */
+}
+
+.result-el.copied::after {
+    content: "Copied! ✅";
+    position: absolute;
+    color: #55fa91;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.form{
+    display: flex;
+    align-content:center;
+    justify-content: center;
+}
+
+#user-input{
+    color: white;
+    font-size: 0.9rem;
+    margin-top: 3rem;
+    margin-right: 3rem;
+    border: solid 1px #4adf86;
+    border-radius: 4px;
+    width: 12rem;
+    height: 2.625rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#273549;
+    overflow-wrap: anywhere;  
+    box-sizing: border-box; 
+    padding: 1rem;
+
+}
+
+#user-input::placeholder {
+    color: #55fa91;       /* Uses your signature green */
+    opacity: 0.6;         /* Makes it slightly transparent so it looks like a placeholder */
+    font-style: italic;   /* Optional: changes the font style */
+    font-size: 0.9rem;    /* Optional: makes it slightly smaller than active text */
+}
+
+
 /*
 Color Palette:
 light blue: #273549
